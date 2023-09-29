@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<div class="card">
-    <div class="card horizontal">
-        <div class="card-content">
-            <span class="card-title">{{ weight.name }}</span>
-            <p>Lbs - {{ weight.size_lbs }}</p>
-            <p>Kgs - {{ weight.size_kgs }}</p>
-            <br>
-            <p>Description: {{ weight.description|linebreaks }}</p>
+<div class="row">
+    <div class="col s12 m5">
+        <div class="horizontal card">
+            <div class="card-content">
+                <span class="card-title">{{ weight.name }}</span>
+                <p>Lbs - {{ weight.size_lbs }}</p>
+                <p>Kgs - {{ weight.size_kgs }}</p>
+                <br>
+                <p>Description: {{ weight.description|linebreaks }}</p>
+            </div>
+            <div class="card-image">
+                <img src="{% static 'images/imgtest.png' %}">
+            </div>
         </div>
-        <div class="card-image">
-            <img src="{% static 'images/imgtest.png' %}">
-        </div>
+        <a class="btn-floating" href="{% url 'weight_delete' weight.id %}"><i class="material-icons">delete</i></a>
+        <a class="btn-floating" href="{% url 'weight_update' weight.id %}"><i class="material-icons">edit</i></a>
     </div>
 </div>
 
