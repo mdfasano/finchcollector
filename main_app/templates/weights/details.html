@@ -18,6 +18,20 @@
         <a class="btn-floating" href="{% url 'weight_delete' weight.id %}"><i class="material-icons">delete</i></a>
         <a class="btn-floating" href="{% url 'weight_update' weight.id %}"><i class="material-icons">edit</i></a>
     </div>
+    <div class="col s12 m5">
+        <div class="card">
+            <div class="card-title">
+                Workouts using {{weight.name}}
+            </div>
+            <div class="card-content">
+                {% for workout in weight.workout_set.all %}
+                  Workout Name: &nbsp;{{workout.name}}
+                  <br>
+                  Workout Difficulty: &nbsp;{{workout.difficulty}}
+              {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

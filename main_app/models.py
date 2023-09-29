@@ -15,3 +15,13 @@ class Weight(models.Model):
     
     def get_absolute_url(self):
         return reverse('weight_details', kwargs={'weight_id': self.id})
+    
+
+class Workout(models.Model):
+    name = models.CharField(max_length=25)
+    difficulty = models.CharField(max_length=10)
+    description = models.TextField()
+    weight = models.ForeignKey(Weight, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
