@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Customer
+from .forms import WorkoutForm
 # Create your views here.
 
 def home(request):
@@ -17,7 +18,11 @@ def customers_index(request):
 
 def customer_details(request, customer_id):
     customer = Customer.objects.get(id=customer_id)
-    return render(request, 'customers/details.html', { 'customer': customer })
+    workout_form = WorkoutForm()
+    return render(request, 'customers/details.html', {
+        'customer': customer,
+        'workout_form': workout_form
+        })
 
 class CustomerCreate(CreateView):
     model = Customer

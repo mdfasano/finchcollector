@@ -10,5 +10,8 @@ body {
   
   footer.page-footer {
     padding-top: 0;
-    text-align: right;
   }
+
+#workout_form {
+  background-color: darkgrey;
+}
