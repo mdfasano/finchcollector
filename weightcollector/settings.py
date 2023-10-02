@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'weightcollector.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'weightcollector',
+        'NAME': 'fitness_customers',
         'USER': 'pudge',
         'PASSWORD': '1636',
     }

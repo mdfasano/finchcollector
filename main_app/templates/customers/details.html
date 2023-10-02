@@ -5,26 +5,25 @@
     <div class="col s12 m5">
         <div class="horizontal card">
             <div class="card-content">
-                <span class="card-title">{{ weight.name }}</span>
-                <p>Lbs - {{ weight.size_lbs }}</p>
-                <p>Kgs - {{ weight.size_kgs }}</p>
+                <span class="card-title">{{ customer.name }}</span>
+                <p>Lbs - {{ customer.size }}</p>
                 <br>
-                <p>Description: {{ weight.description|linebreaks }}</p>
+                <p>Description: {{ customer.description|linebreaks }}</p>
             </div>
             <div class="card-image">
                 <img src="{% static 'images/imgtest.png' %}">
             </div>
         </div>
-        <a class="btn-floating" href="{% url 'weight_delete' weight.id %}"><i class="material-icons">delete</i></a>
-        <a class="btn-floating" href="{% url 'weight_update' weight.id %}"><i class="material-icons">edit</i></a>
+        <a class="btn-floating" href="{% url 'customer_delete' customer.id %}"><i class="material-icons">delete</i></a>
+        <a class="btn-floating" href="{% url 'customer_update' customer.id %}"><i class="material-icons">edit</i></a>
     </div>
     <div class="col s12 m5">
         <div class="card">
             <div class="card-title">
-                Workouts using {{weight.name}}
+                Workouts Planned with {{customer.name}}
             </div>
             <div class="card-content">
-                {% for workout in weight.workout_set.all %}
+                {% for workout in customer.workout_set.all %}
                   Workout Name: &nbsp;{{workout.name}}
                   <br>
                   Workout Difficulty: &nbsp;{{workout.difficulty}}

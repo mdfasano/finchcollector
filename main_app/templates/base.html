@@ -17,12 +17,12 @@
     <nav>
       <div class="nav-wrapper">
         <ul>
-          <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Cat Collector</a></li>
+          <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Weight Collector</a></li>
         </ul>
         <ul class="right">
           <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'weights_index' %}">All My Weights</a></li>
-          <li><a href="{% url 'weight_create' %}">Create new Weight</a></li>
+          <li><a href="{% url 'customers_index' %}">All My Customers</a></li>
+          <li><a href="{% url 'customer_create' %}">Create new Customer</a></li>
         </ul>
       </div>
     </nav>
@@ -32,7 +32,7 @@
     {% endblock %}
   </main>
   <footer class="page-footer">
-    <div class="right">All Rights Reserved, <a id='admin' href=/admin>&copy;</a> 2021 Cat Collector &nbsp;</div>
+    <div class="right">All Rights Reserved, <a id='admin' href=/admin>&copy;</a> 2021 Weight Collector &nbsp;</div>
   </footer>
 </body>
 </html>
