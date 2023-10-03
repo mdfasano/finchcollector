@@ -17,6 +17,7 @@ class Customer(models.Model):
     name = models.CharField(max_length=100)
     size = models.IntegerField()
     description = models.TextField(max_length=250)
+    weights = models.ManyToManyField(Weight)
 
     def __str__(self):
         return self.name

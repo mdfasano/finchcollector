@@ -41,6 +41,47 @@
             </div>
         </div>
     </div>
+    <hr>
+    <div class="row">
+      <div class="col s6">
+        <h3>{{ customer.name }}'s Weights</h3>
+        {% if customer.weights.count %}
+          {% for weight in customer.weights.all %}
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">
+                  {{ weight.name }} - {{ weight.size_lbs }}
+                </span>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <h5>No Weights</h5>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col s6">
+        <h3>Available Weights</h3>
+        {% if weights.count %}
+          {% for weight in weights.all %}
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">
+                    {{ weight.name }}
+                </span>
+              </div>
+              <div class="card-action">
+                <form action="{% url 'assoc_weight' customer.id weight.id %}" method="POST">
+                  {% csrf_token %}
+                  <button type="submit" class="btn">Add</button>
+                </form>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <h5>{{customer.name}} Already Has All Weights Available</h5>
+        {% endif %}
+      </div>
 </div>
 
 {% endblock %}

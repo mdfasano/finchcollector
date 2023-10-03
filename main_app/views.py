@@ -21,14 +21,21 @@ def customers_index(request):
 def customer_details(request, customer_id):
     customer = Customer.objects.get(id=customer_id)
     workout_form = WorkoutForm()
+    id_list = customer.weights.all().values_list('id')
+    weights_c_doesnt_have = Weight.objects.exclude(id__in=id_list)
     return render(request, 'customers/details.html', {
         'customer': customer,
-        'workout_form': workout_form
+        'workout_form': workout_form,
+        'weights': weights_c_doesnt_have,
         })
+
+def assoc_weight(request, customer_id, weight_id):
+    Customer.objects.get(id=customer_id).weights.add(weight_id)
+    return redirect('customer_details', customer_id=customer_id)
 
 class CustomerCreate(CreateView):
     model = Customer
-    fields = '__all__'
+    fields = ['name', 'size', 'description']
 
 class CustomerUpdate(UpdateView):
     model = Customer

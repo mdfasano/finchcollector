@@ -16,4 +16,5 @@ urlpatterns = [
     path('Weight/create/', views.WeightCreate.as_view(), name='weight_create'),
     path('Weight/<int:pk>/update/', views.WeightUpdate.as_view(), name='weight_update'),
     path('Weight/<int:pk>/delete/', views.WeightDelete.as_view(), name='weight_delete'),
+    path('customers/<int:customer_id>/assoc_weight/<int:weight_id>/', views.assoc_weight, name='assoc_weight'),
 ]
