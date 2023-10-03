@@ -1,17 +1,25 @@
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
   
-  main {
-    flex: 1 0 auto;
-  }
-  
-  footer.page-footer {
-    padding-top: 0;
-  }
+main {
+  flex: 1 0 auto;
+}
+
+footer.page-footer {
+  padding-top: 0;
+}
 
 #workout_form {
-  background-color: darkgrey;
+  background-color: lightgrey;
+}
+
+#workout_form>p {
+  border-style:initial;
+}
+
+.card {
+  border-style: solid;
 }

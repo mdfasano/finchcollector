@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Customer
+from django.views.generic import ListView, DetailView
+from .models import Customer, Workout
 from .forms import WorkoutForm
 # Create your views here.
 
@@ -35,3 +37,22 @@ class CustomerUpdate(UpdateView):
 class CustomerDelete(DeleteView):
     model = Customer
     success_url = '/customers'
+
+def add_workout(request, customer_id):
+    # return redirect('/about/')
+    form = WorkoutForm(request.POST)
+    if form.is_valid():
+        new_workout = form.save(commit=False)
+        new_workout.customer_id = customer_id
+        new_workout.save()
+    return redirect('customer_details', customer_id=customer_id)
+
+class WorkoutDelete(DeleteView):
+    model = Workout
+    
+    def get_success_url(self):
+        customer_id = self.object.customer_id
+        return reverse(
+            'customer_details', 
+            kwargs = {'customer_id': customer_id}
+        )

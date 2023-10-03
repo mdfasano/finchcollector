@@ -27,15 +27,19 @@
                   Workout Name: &nbsp;{{workout.name}}
                   <br>
                   Workout Difficulty: &nbsp;{{workout.difficulty}}
-              {% endfor %}
+                  <form method="POST" action="{% url 'workout_delete' workout.id %}">
+                    {% csrf_token %}<input type="submit" value="DELETE">
+                 </form>
+                {% endfor %}
+            <br><br>
+            <form id="workout_form" action="{% url 'add_workout' customer.id %}" method="POST">
+                {% csrf_token %}
+                <!-- Render the inputs -->
+                {{ workout_form.as_p }}
+                <input type="submit" class="btn" value="Add Workout">
+            </form>
             </div>
         </div>
-        <form id="workout_form" method="POST">
-            {% csrf_token %}
-            <!-- Render the inputs -->
-            {{ workout_form.as_p }}
-            <input type="submit" class="btn" value="Add Workout">
-        </form>
     </div>
 </div>
 

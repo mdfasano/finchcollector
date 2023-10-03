@@ -14,6 +14,9 @@ class Customer(models.Model):
     def get_absolute_url(self):
         return reverse('customer_details', kwargs={'customer_id': self.id})
     
+    def exercised_today(self):
+        return self.workout_set.count() >= 2
+    
 
 class Workout(models.Model):
     name = models.CharField(max_length=25)
@@ -23,3 +26,6 @@ class Workout(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_customer_url(self):
+        return reverse('customer_details', kwargs={'customer_id': self.customer})

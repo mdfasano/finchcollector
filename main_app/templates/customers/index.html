@@ -10,7 +10,11 @@
         <span class="card-title">{{ customer.name }}</span>
         <p>Lbs - {{ customer.size }}</p>
         <br>
-
+        {% if customer.exercised_today %}
+          <h5> good job! </h5>
+        {% else %}
+          <h5> you need more exercise! </h5>
+        {% endif %}
       </div>
     </a>
   </div>
