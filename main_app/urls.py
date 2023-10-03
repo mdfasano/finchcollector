@@ -10,5 +10,10 @@ urlpatterns = [
     path('customers/<int:pk>/update/', views.CustomerUpdate.as_view(), name='customer_update'),
     path('customers/<int:pk>/delete/', views.CustomerDelete.as_view(), name='customer_delete'),
     path('customers/<int:customer_id>/add_workout/', views.add_workout, name='add_workout'),
-    path('workout/<int:pk>/delete/', views.WorkoutDelete.as_view(), name='workout_delete')
+    path('workout/<int:pk>/delete/', views.WorkoutDelete.as_view(), name='workout_delete'),
+    path('Weights/', views.WeightList.as_view(), name='weights_index'),
+    path('Weight/<int:pk>/', views.WeightDetail.as_view(), name='weight_detail'),
+    path('Weight/create/', views.WeightCreate.as_view(), name='weight_create'),
+    path('Weight/<int:pk>/update/', views.WeightUpdate.as_view(), name='weight_update'),
+    path('Weight/<int:pk>/delete/', views.WeightDelete.as_view(), name='weight_delete'),
 ]

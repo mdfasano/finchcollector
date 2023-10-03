@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import Customer, Workout
+from .models import Customer, Workout, Weight
 from .forms import WorkoutForm
 # Create your views here.
 
@@ -56,3 +56,21 @@ class WorkoutDelete(DeleteView):
             'customer_details', 
             kwargs = {'customer_id': customer_id}
         )
+    
+class WeightList(ListView):
+    model = Weight
+
+class WeightDetail(DetailView):
+    model = Weight
+
+class WeightDelete(DeleteView):
+    model = Weight
+    success_url = '/about/'
+
+class WeightCreate(CreateView):
+    model = Weight
+    fields = '__all__'
+
+class WeightUpdate(UpdateView):
+    model = Weight
+    fields = ['name', 'size_lbs']
